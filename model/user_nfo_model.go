@@ -8,7 +8,7 @@ type UserInfoModel struct {
 	Password   string `json:"password"`
 	Name       string `json:"name"` //用户昵称
 	Phone      string `json:"phone"`
-	UserType   int64  `json:"user_type"` //0-普通用户 1-admin用户
+	UserType   int64  `json:"user_type"` //0-普通用户 1-组织管理员 2-admin用户
 	Gender     int64  `json:"gender"`
 	Age        int64  `json:"age"`
 	CreateTime int64  `json:"create_time"`

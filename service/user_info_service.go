@@ -21,7 +21,7 @@ func RegisterUser(req model.RegisterUserReq, c *gin.Context) (model.RegisterUser
 	}
 	//写session
 	session := sessions.Default(c)
-	if session.Get("user") == nil {
+	if session.Get("user") == nil || session.Get("user").(int64) != user.Id {
 		session.Set("user", user.Id)
 		err := session.Save()
 		if err != nil {

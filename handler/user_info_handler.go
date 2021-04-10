@@ -63,3 +63,7 @@ func GetUserInfos(c *gin.Context) {
 	}
 	SucResponse(c, resp)
 }
+
+func LoginUser(c *gin.Context) {
+
+}
