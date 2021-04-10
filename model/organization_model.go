@@ -34,6 +34,24 @@ type RegisterOrganizationReq struct {
 }
 
 type RegisterOrganizationResp struct {
-	Res          *utils.Res         `json:"res"`
+	ResStatus    *utils.Res         `json:"res_status"`
 	Organization *OrganizationModel `json:"organization"`
+}
+
+type LoginOrgReq struct {
+	OrgUserName string `json:"org_user_name"` //机构用户名
+	OrgPassword string `json:"org_password"`
+}
+
+type LoginOrgResp struct {
+	ResStatus *utils.Res         `json:"res_status"`
+	Org       *OrganizationModel `json:"org"`
+}
+
+type UnLoginOrgReq struct {
+	Id int64 `json:"id"`
+}
+
+type UnLoginOrgResp struct {
+	ResStatus *utils.Res `json:"res_status"`
 }

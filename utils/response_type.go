@@ -5,6 +5,10 @@ import (
 	"net/http"
 )
 
+type ErrResp struct {
+	ResStatus *Res `json:"res_status"`
+}
+
 //返回请求信息
 func SucResponse(c *gin.Context, data interface{}) {
 	c.JSON(http.StatusOK, gin.H{
@@ -15,8 +19,7 @@ func SucResponse(c *gin.Context, data interface{}) {
 //返回错误信息
 func ErrResponse(c *gin.Context, code int, errCode int64, msg string) {
 	c.JSON(code, gin.H{
-		"code": errCode,
-		"msg":  msg,
+		"data": ErrResp{ResStatus: NewRes(errCode, msg)},
 	})
 }
 

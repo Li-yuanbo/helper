@@ -51,3 +51,13 @@ func AddOrganization(req *model.RegisterOrganizationReq, db *gorm.DB) (*Organiza
 	log.Println("[db] add org success")
 	return &orgModel, nil
 }
+
+func GetOrgByName(req *model.LoginOrgReq, db *gorm.DB) (*Organization, error) {
+	var org Organization
+	if err := db.Model(&Organization{}).Where("org_user_name = ?", req.OrgUserName).First(&org).Error; err != nil {
+		log.Println("[db] get org err: ", err)
+		return nil, err
+	}
+	log.Println("[db] get org success")
+	return &org, nil
+}

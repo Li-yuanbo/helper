@@ -26,8 +26,8 @@ type RegisterUserReq struct {
 }
 
 type RegisterUserResp struct {
-	Res  *utils.Res     `json:"res"`
-	User *UserInfoModel `json:"user"`
+	ResStatus *utils.Res     `json:"res_status"`
+	User      *UserInfoModel `json:"user"`
 }
 
 type GetUserInfosReq struct {
@@ -37,9 +37,27 @@ type GetUserInfosReq struct {
 }
 
 type GetUserInfosResp struct {
-	Res          *utils.Res       `json:"res"`
+	ResStatus    *utils.Res       `json:"res_status"`
 	CurPage      int64            `json:"cur_page"`
 	TotalPage    int64            `json:"total_page"`
 	TotalUserNum int64            `json:"total_user_num"`
 	Users        []*UserInfoModel `json:"users"`
+}
+
+type LoginUserReq struct {
+	UserName string `json:"user_name"`
+	Password string `json:"password"`
+}
+
+type LoginUserResp struct {
+	ResStatus *utils.Res     `json:"res_status"`
+	User      *UserInfoModel `json:"user"`
+}
+
+type UnLoginUserReq struct {
+	Id int64 `json:"id"`
+}
+
+type UnLoginUserResp struct {
+	ResStatus *utils.Res `json:"res_status"`
 }

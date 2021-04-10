@@ -10,13 +10,16 @@ import (
 
 func handler(r *gin.Engine) {
 	//user_info
-	r.POST("/user", RegisterUser)    //注册用户
-	r.GET("/users", GetUserInfos)    //分页获取用户基础信息
-	r.POST("/user/login", LoginUser) //用户登录
+	r.POST("/user", RegisterUser)        //注册用户
+	r.GET("/users", GetUserInfos)        //分页获取用户基础信息
+	r.GET("/user/login", LoginUser)      //用户登录
+	r.DELETE("/user/login", UnLoginUser) //退出登录
 
 	//organization
 	r.POST("/org", RegisterOrganization) //注册志愿者机构
-	r.POST("/org/login", LoginOrg)       //志愿者机构登录
+	r.GET("/org/login", LoginOrg)        //志愿者机构登录
+	r.DELETE("/org/login", UnLoginOrg)   //志愿者机构退出登录
+
 }
 
 func main() {

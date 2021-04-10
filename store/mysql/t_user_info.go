@@ -54,6 +54,16 @@ func GetUserCount(db *gorm.DB) (int64, error) {
 	return count, nil
 }
 
+func GetUserByName(req *model.LoginUserReq, db *gorm.DB) (*UserInfo, error) {
+	var userModel UserInfo
+	if err := db.Model(&UserInfo{}).Where("user_name = ?", req.UserName).First(&userModel).Error; err != nil {
+		log.Println("[db] get user by name err: ", err)
+		return nil, err
+	}
+	log.Println("[db] get user by name success")
+	return &userModel, nil
+}
+
 func GetUsersByPage(req *model.GetUserInfosReq, db *gorm.DB) ([]*UserInfo, error) {
 	res := make([]*UserInfo, 0, 0)
 	if err := db.Model(&UserInfo{}).Limit(req.Limit).Offset(req.Offset).Find(&res).Error; err != nil {
