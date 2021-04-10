@@ -32,7 +32,6 @@ func RegisterOrganization(c *gin.Context) {
 		ErrResponse(c, http.StatusInternalServerError, resp.ResStatus.Code, resp.ResStatus.Msg)
 		return
 	}
-	resp.ResStatus = NewRes(10000, "SUCCESS")
 	SucResponse(c, resp)
 }
 

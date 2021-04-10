@@ -20,6 +20,8 @@ func handler(r *gin.Engine) {
 	r.GET("/org/login", LoginOrg)        //志愿者机构登录
 	r.DELETE("/org/login", UnLoginOrg)   //志愿者机构退出登录
 
+	//activity
+	r.POST("/activity", PublishActivity) //发布活动
 }
 
 func main() {

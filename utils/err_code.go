@@ -19,7 +19,7 @@ var ERR_CODE = map[int]string{
 	30001: "ORG_USERNAME_ERROR",    //组织账号错误
 	30002: "ORG_PASSWORD_ERROR",    //组织密码错误
 	30003: "ORG_ALREADY_LOGIN_ERR", //机构已经登录
-	30004: "ORG_NOT_LOGIN_ERR",     //机构已经登录
+	30004: "ORG_NOT_LOGIN_ERR",     //机构未登录
 }
 
 type Res = struct {

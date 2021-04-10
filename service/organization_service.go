@@ -51,6 +51,7 @@ func RegisterOrganization(c *gin.Context, req *model.RegisterOrganizationReq) (*
 		UpdateTime:        organization.UpdateTime,
 	}
 	resp.Organization = &orgModel
+	resp.ResStatus = utils.NewRes(10000, "SUCCESS")
 	return &resp, nil
 }
 
