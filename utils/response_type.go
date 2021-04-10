@@ -6,19 +6,17 @@ import (
 )
 
 //返回请求信息
-func SucResponse(c *gin.Context, data interface{}){
+func SucResponse(c *gin.Context, data interface{}) {
 	c.JSON(http.StatusOK, gin.H{
-		"code": 10000,
-		"msg":  "SUCCESS",
-		"data":	data,
+		"data": data,
 	})
 }
 
 //返回错误信息
-func ErrResponse(c *gin.Context, code int, errCode int64, msg string){
+func ErrResponse(c *gin.Context, code int, errCode int64, msg string) {
 	c.JSON(code, gin.H{
 		"code": errCode,
-		"msg":	msg,
+		"msg":  msg,
 	})
 }
 

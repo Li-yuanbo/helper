@@ -8,8 +8,10 @@ import (
 	"log"
 )
 
-func handler(r *gin.Engine){
+func handler(r *gin.Engine) {
+	//user_info
 	r.POST("/user", RegisterUser) //注册用户
+	r.GET("/users", GetUserInfos) //分页获取用户基础信息
 }
 
 func main() {
