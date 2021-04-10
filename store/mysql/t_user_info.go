@@ -1,5 +1,12 @@
 package mysql
 
+import (
+	"github.com/jinzhu/gorm"
+	"helper/model"
+	"log"
+	"time"
+)
+
 type UserInfo struct {
 	Id			int64	`gorm:"column:id"`
 	UserName	string  `gorm:"column:user_name"`	//用户名
@@ -15,4 +22,24 @@ type UserInfo struct {
 
 func (*UserInfo)TableName() string {
 	return "user_info"
+}
+
+func AddUser(req model.RegisterUserReq, db *gorm.DB)(*UserInfo, error) {
+	userModel := UserInfo{
+		UserName:   req.UserName,
+		Password:   req.Password,
+		Name:       req.Name,
+		Phone:      req.Phone,
+		UserType:   req.UserType,
+		Gender:     req.Gender,
+		Age:        req.Age,
+		CreateTime: time.Now().Unix(),
+		UpdateTime: time.Now().Unix(),
+	}
+	if err := db.Create(&userModel).Error; err != nil {
+		log.Println("[db] register user err: ", err, ". user: ", userModel)
+		return nil, err
+	}
+	log.Println("[db] register user success")
+	return &userModel, nil
 }

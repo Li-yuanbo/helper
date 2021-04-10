@@ -5,6 +5,7 @@ import (
 	"github.com/gin-contrib/sessions/cookie"
 	"github.com/gin-gonic/gin"
 	. "helper/handler"
+	"log"
 )
 
 func handler(r *gin.Engine){
@@ -24,5 +25,8 @@ func main() {
 	//加载handler
 	handler(r)
 	//启动项目
-	r.Run(":8080")
+	err := r.Run(":8080")
+	if err != nil {
+		log.Println("run gin err: ", err)
+	}
 }

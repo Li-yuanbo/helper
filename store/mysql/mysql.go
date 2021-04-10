@@ -11,7 +11,7 @@ const(
 	USERNAME = "root"
 	PASSWORD = "mysql"
 	URL = "127.0.0.1:3306"
-	DATABASE = "credit_card"
+	DATABASE = "helper"
 )
 
 var db *gorm.DB

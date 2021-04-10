@@ -1,5 +1,7 @@
 package model
 
+import "helper/utils"
+
 type UserInfoModel struct {
 	Id			int64	`json:"id"`
 	UserName	string  `json:"user_name"`	//用户名
@@ -24,5 +26,6 @@ type RegisterUserReq struct {
 }
 
 type RegisterUserResp struct {
+	Res	 *utils.Res		`json:"res"`
 	User *UserInfoModel `json:"user"`
 }

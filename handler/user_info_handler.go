@@ -27,7 +27,13 @@ func RegisterUser(c *gin.Context) {
 		return
 	}
 	log.Println("register user request:", req)
-
-	resp, err := service.RegisterUser(req)
-
+	//调用service
+	resp, err := service.RegisterUser(req, c)
+	if err != nil {
+		log.Println("register user err: ", err)
+		ErrResponse(c, http.StatusInternalServerError, resp.Res.Code, resp.Res.Msg)
+		return
+	}
+	//返回成功
+	SucResponse(c, resp.User)
 }
